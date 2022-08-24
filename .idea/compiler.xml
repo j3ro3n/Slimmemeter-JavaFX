@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Slimmemeter-JavaFX" target="18" />
+      <module name="Slimmemeter-JavaFX" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

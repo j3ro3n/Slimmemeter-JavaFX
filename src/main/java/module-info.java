@@ -6,6 +6,8 @@ module nl.avans.slimmemeterjavafx {
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
     requires javafx.graphics;
+    requires java.sql;
+    requires com.google.gson;
     //requires javafx.sql;
     //requires gson;
 
