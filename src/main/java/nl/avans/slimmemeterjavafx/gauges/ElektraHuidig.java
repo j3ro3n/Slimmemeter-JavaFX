@@ -44,7 +44,7 @@ public class ElektraHuidig implements Gauges {
 
     @Override
     public String toString() {
-        return String.format("Elektra huidig (reading: %d", reading);
+        return String.format("Elektra huidig (reading: %d)", reading);
     }
 }
 

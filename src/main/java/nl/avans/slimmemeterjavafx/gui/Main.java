@@ -188,7 +188,7 @@ public class Main extends Application {
         gaugesTypeComboBox = new ComboBox<>();
         gaugesTypeComboBox.setPrefWidth(200.0);
         gaugesTypeComboBox.setPromptText("Select gauge...");
-        gaugesTypeComboBox.getItems().addAll("Elektra hoog", "Elektra laag", "Elektra totaal", "Elektra huidig", "gas");
+        gaugesTypeComboBox.getItems().addAll("Elektra hoog", "Elektra laag", "Elektra zon", "Elektra huidig", "gas", "Buiten temp");
         gaugesTypeComboBox
                 .valueProperty()
                 .addListener((observable, oldValue, newValue) -> {

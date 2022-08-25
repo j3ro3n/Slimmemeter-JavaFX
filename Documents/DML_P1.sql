@@ -8,5 +8,6 @@ CREATE TABLE `readings` (
                           `ElektraHuidig` int(11) DEFAULT NULL,
                           `ElektraZon` int(11) DEFAULT NULL,
                           `Gas` int(11) DEFAULT NULL,
+                          `BuitenTemp` int(11) DEFAULT NULL,
                           PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

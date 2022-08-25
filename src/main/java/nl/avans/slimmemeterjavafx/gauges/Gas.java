@@ -44,7 +44,7 @@ public class Gas implements Gauges {
 
     @Override
     public String toString() {
-        return String.format("Gas (reading m2: %d", reading);
+        return String.format("Gas (reading m2: %d)", reading);
     }
 }
 

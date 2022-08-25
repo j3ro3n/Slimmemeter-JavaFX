@@ -44,7 +44,7 @@ public class BuitenTemp implements Gauges {
 
     @Override
     public String toString() {
-        return String.format("Buiten temperatuur (reading: %d", reading);
+        return String.format("Buiten temperatuur (reading: %d)", reading);
     }
 }
 

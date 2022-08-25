@@ -13,12 +13,12 @@ public class ElektraHoog implements Gauges {
     private int reading;
 
     public ElektraHoog(int reading) {
-        this.setReading(reading);
+        this.setreading(reading);
     }
 
-    public int getReading() { return this.reading; }
+    public int getreading() { return this.reading; }
 
-    public void setReading(int reading) { this.reading = reading; }
+    public void setreading(int reading) { this.reading = reading; }
 
     @Override
     public HashMap<String, String> getFields() { return ElektraHoog.fields; }
@@ -44,7 +44,7 @@ public class ElektraHoog implements Gauges {
 
     @Override
     public String toString() {
-        return String.format("Elektra hoog (reading: %d", reading);
+        return String.format("Elektra hoog (reading: %d)", reading);
     }
 }
 

@@ -111,7 +111,7 @@ class GaugesScene {
 
         for (HashMap.Entry<String, TextField> entry : textFields.entrySet()) {
             TextField textField = entry.getValue();
-            getReturnData().put(entry.getKey(), Integer.parseInt(textField.getText()));
+            returnData.put(entry.getKey(), Integer.parseInt(textField.getText()));
         }
 
         return returnData;

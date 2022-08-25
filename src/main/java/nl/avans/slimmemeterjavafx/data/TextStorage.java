@@ -57,6 +57,7 @@ public class TextStorage implements StorageInterface {
     public ArrayList<Gauges> loadData(String location) throws Exception {
         FileReader fileReader = new FileReader(location);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
+        StringBuilder file = new StringBuilder();
         String currentLine = bufferedReader.readLine();
 
         while (currentLine != null) {

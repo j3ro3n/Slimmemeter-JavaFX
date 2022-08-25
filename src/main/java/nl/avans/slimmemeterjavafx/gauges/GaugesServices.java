@@ -37,7 +37,7 @@ public class GaugesServices {
 
     // Calculate KwH combined in the gauge service
     public double calculateTotalKwh() {
-        double totalKwh = 0000000;
+        double totalKwh = 0.0;
 
         for (Gauges gauges : gauges) {
             totalKwh += gauges.calculateKwh();

@@ -44,6 +44,6 @@ public class ElektraLaag implements Gauges {
 
     @Override
     public String toString() {
-        return String.format("Elektra laag (reading: %d", reading);
+        return String.format("Elektra laag (reading: %d)", reading);
     }
 }

@@ -53,6 +53,6 @@ public class ElektraZon implements Gauges {
 
     @Override
     public String toString() {
-        return String.format("Elektra zon (reading: %d", reading);
+        return String.format("Elektra zon (reading: %d)", reading);
     }
 }

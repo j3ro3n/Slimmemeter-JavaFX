@@ -87,15 +87,15 @@ public class DatabaseStorage implements StorageInterface {
 
     // Save one gauge to the P1 database
     private void saveGauges(Gauges gauges) throws Exception {
-        PreparedStatement statement = connection.prepareStatement("INSERT INTO readings (type, ElektraHoog, ElektraLaag, ElektraHuidig, ElektraZon, Gas, BuitenTemp) VALUES (?,?,?,?,?,?,?)");
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO readings (type, ElektraHoog, ElektraLaag, ElektraHuidig, ElektraZon, Gas, BuitenTemp) VALUES (?, ?, ?, ?, ?, ?, ?)");
         HashMap<String, Integer> data = gauges.getData();
         statement.setObject(1, gauges.getType());
         statement.setObject(2, data.getOrDefault("ElektraHoog", null));
         statement.setObject(3, data.getOrDefault("ElektraLaag", null));
         statement.setObject(4, data.getOrDefault("ElektraHuidig", null));
         statement.setObject(5, data.getOrDefault("ElektraZon", null));
-        statement.setObject(5, data.getOrDefault("Gas", null));
-        statement.setObject(5, data.getOrDefault("BuitenTemp", null));
+        statement.setObject(6, data.getOrDefault("Gas", null));
+        statement.setObject(7, data.getOrDefault("BuitenTemp", null));
         statement.executeUpdate();
     }
 
@@ -110,7 +110,7 @@ public class DatabaseStorage implements StorageInterface {
     public void saveData(ArrayList<Gauges> gauges) throws Exception {
         this.connection = connect();
 
-        connection.prepareStatement("DELETE FROM gauges")
+        connection.prepareStatement("DELETE FROM readings")
                 .execute();
         for (Gauges gauge : gauges) {
             this.saveGauges(gauge);
