@@ -82,7 +82,7 @@ public class Main extends Application {
         Label kwhLabel = new Label("Kilowatt per hour: (KwH)");
         kwhText = new TextField();
         kwhText.setPrefWidth(200.0);
-        kwhText.setText("0000000");
+        kwhText.setText("0");
         kwhText.setDisable(true);
         kwhBox.getChildren().addAll(kwhLabel, kwhText);
 
@@ -91,7 +91,7 @@ public class Main extends Application {
         Label totalKwhLabel = new Label("Total Kilowatt per hour: (KwH)");
         totalKwhText = new TextField();
         totalKwhText.setPrefWidth(200.0);
-        totalKwhText.setText("0000000");
+        totalKwhText.setText("0");
         totalKwhText.setDisable(true);
         kwhBox.getChildren().addAll(totalKwhLabel, totalKwhText);
 
@@ -118,7 +118,7 @@ public class Main extends Application {
                 if (this.previousSelectedItem != null && this.previousSelectedItem.equals(selectedItem)) {
                     this.previousSelectedItem = null;
                     this.previousSelectedGauges = null;
-                    kwhText.setText("0000000");
+                    kwhText.setText("0");
                     gaugesListHeader.setText("Gauges:");
                     deleteButton.setDisable(true);
                     Platform.runLater(() -> gaugesList.getSelectionModel().select(null));
@@ -177,7 +177,7 @@ public class Main extends Application {
             gauges.add(gauge.toString());
         }
 
-        kwhText.setText("0000000");
+        kwhText.setText("0");
         totalKwhText.setText(String.format("%s", gaugesServices.calculateTotalKwh()));
         gaugesList.getItems().addAll(gauges);
     }
@@ -188,7 +188,7 @@ public class Main extends Application {
         gaugesTypeComboBox = new ComboBox<>();
         gaugesTypeComboBox.setPrefWidth(200.0);
         gaugesTypeComboBox.setPromptText("Select gauge...");
-        gaugesTypeComboBox.getItems().addAll("Elektra hoog", "Elektra laag", "Elektra zon", "Elektra huidig", "gas", "Buiten temp");
+        gaugesTypeComboBox.getItems().addAll("Elektra", "gas", "Buiten temp");
         gaugesTypeComboBox
                 .valueProperty()
                 .addListener((observable, oldValue, newValue) -> {

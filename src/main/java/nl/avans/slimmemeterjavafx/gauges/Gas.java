@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class Gas implements Gauges {
 
     public static HashMap<String, String> fields = new HashMap<String, String>() {{
-        put("reading", "Reading:");
+        put("gar", "Gas:");
     }};
 
     public final String type = "Gas";
@@ -26,7 +26,7 @@ public class Gas implements Gauges {
     @Override
     public HashMap<String, Integer> getData() {
         HashMap<String, Integer> data = new HashMap<>();
-        data.put("reading", this.reading);
+        data.put("gas", this.reading);
 
         return data;
     }
@@ -36,7 +36,7 @@ public class Gas implements Gauges {
 
     @Override
     public void setData(HashMap<String, Integer> data) {
-        this.reading = data.getOrDefault("reading", 0);
+        this.reading = data.getOrDefault("gas", 0);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class Gas implements Gauges {
 
     @Override
     public String toString() {
-        return String.format("Gas (reading m2: %d)", reading);
+        return String.format("Gas (gas m2: %d)", reading);
     }
 }
 

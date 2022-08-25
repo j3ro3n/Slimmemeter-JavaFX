@@ -9,17 +9,11 @@ public class GaugesServices {
     // List of all gauges in the gauges service
     private ArrayList<Gauges> gauges = new ArrayList<>();
 
-    // Get the fields for the shape type
+    // Get the fields for the gauge type
     public static HashMap<String, String> getFields(String gaugesType) {
         switch (gaugesType) {
-            case "Elektra hoog":
-                return ElektraHoog.fields;
-            case "Elektra laag":
-                return ElektraLaag.fields;
-            case "Elektra huidig":
-                return ElektraHuidig.fields;
-            case "Elektra zonnepanelen":
-                return ElektraZon.fields;
+            case "Elektra":
+                return Elektra.fields;
             case "Gas":
                 return Gas.fields;
             case "Buiten temperatuur":
@@ -53,23 +47,14 @@ public class GaugesServices {
         Gauges newGauges;
 
         switch (gaugesType){
-            case "Elektra hoog":
-                newGauges = new ElektraHoog(data.get("reading"));
-                break;
-            case "Elektra laag":
-                newGauges = new ElektraLaag(data.get("reading"));
-                break;
-            case "Elektra huidig":
-                newGauges = new ElektraHuidig(data.get("reading"));
-                break;
-            case "Elektra zonnepanelen":
-                newGauges = new ElektraZon(data.get("reading"));
+            case "Elektra":
+                newGauges = new Elektra(data.get("readingHoog"), data.get("readingLaag"), data.get("readingZon"));
                 break;
             case "Gas":
-                newGauges = new Gas(data.get("reading"));
+                newGauges = new Gas(data.get("Gas"));
                 break;
             case "Buiten temperatuur":
-                newGauges = new BuitenTemp(data.get("reading"));
+                newGauges = new BuitenTemp(data.get("BuitenTemp"));
                 break;
             default:
                 return null;

@@ -12,10 +12,10 @@ public interface StorageInterface {
     //Get data from a directory location on device
     ArrayList<Gauges> loadData(String location) throws Exception;
 
-    //Insert list of shapes to the vat database
+    //Insert list of gauges to the vat database
     void saveData(ArrayList<Gauges> gauges) throws Exception;
 
-    //Save list of shapes to a filepath on device
-    void saveData(String location, ArrayList<Gauges> shapes) throws Exception;
+    //Save list of gauges to a filepath on device
+    void saveData(String location, ArrayList<Gauges> gauges) throws Exception;
 
 }

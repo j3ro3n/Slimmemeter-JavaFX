@@ -25,17 +25,8 @@ public class TextStorage implements StorageInterface {
             JsonObject jsonObject = jsonElement.getAsJsonObject();
 
             switch (jsonObject.get("type").getAsString()) {
-                case "Elektra hoog":
-                    gauges.add(new ElektraHoog(jsonObject.get("ElektraHoog").getAsInt()));
-                    break;
-                case "Elektra laag":
-                    gauges.add(new ElektraLaag(jsonObject.get("ElektraLaag").getAsInt()));
-                    break;
-                case "Elektra huidig":
-                    gauges.add(new ElektraHuidig(jsonObject.get("ElektraHuidig").getAsInt()));
-                    break;
-                case "Elektra zon":
-                    gauges.add(new ElektraZon(jsonObject.get("ElektraZon").getAsInt()));
+                case "Elektra":
+                    gauges.add(new Elektra(jsonObject.get("readingHoog").getAsInt(), jsonObject.get("readingHoog").getAsInt(), jsonObject.get("readingZon").getAsInt()));
                     break;
                 case "Gas":
                     gauges.add(new Gas(jsonObject.get("Gas").getAsInt()));

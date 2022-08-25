@@ -48,25 +48,15 @@ public class DatabaseStorage implements StorageInterface {
         while (gaugesResultSet.next()) {
             String gaugeType = gaugesResultSet.getString("type");
 
-            int ElektraHoog = gaugesResultSet.getInt("ElektraHoog");
-            int ElektraLaag = gaugesResultSet.getInt("ElektraLaag");
-            int ElektraHuidig = gaugesResultSet.getInt("ElektraHuidig");
-            int ElektraZon = gaugesResultSet.getInt("ElektraZon");
+            int readingHoog = gaugesResultSet.getInt("readingHoog");
+            int readingLaag = gaugesResultSet.getInt("readingLaag");
+            int readingZon = gaugesResultSet.getInt("readingZon");
             int Gas = gaugesResultSet.getInt("Gas");
             int BuitenTemp = gaugesResultSet.getInt("BuitenTemp");
 
             switch (gaugeType) {
-                case "Elektra hoog":
-                    gauges.add(new ElektraHoog(ElektraHoog));
-                    break;
-                case "Elektra laag":
-                    gauges.add(new ElektraLaag(ElektraLaag));
-                    break;
-                case "Elektra huidig":
-                    gauges.add(new ElektraHuidig(ElektraHuidig));
-                    break;
-                case "Elektra zon":
-                    gauges.add(new ElektraZon(ElektraZon));
+                case "Elektra":
+                    gauges.add(new Elektra(readingHoog, readingLaag, readingZon));
                     break;
                 case "Gas":
                     gauges.add(new Gas(Gas));
@@ -87,15 +77,14 @@ public class DatabaseStorage implements StorageInterface {
 
     // Save one gauge to the P1 database
     private void saveGauges(Gauges gauges) throws Exception {
-        PreparedStatement statement = connection.prepareStatement("INSERT INTO readings (type, ElektraHoog, ElektraLaag, ElektraHuidig, ElektraZon, Gas, BuitenTemp) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO readings (type, readingHoog, readingLaag, readingZon, Gas, BuitenTemp) VALUES (?, ?, ?, ?, ?, ?)");
         HashMap<String, Integer> data = gauges.getData();
         statement.setObject(1, gauges.getType());
-        statement.setObject(2, data.getOrDefault("ElektraHoog", null));
-        statement.setObject(3, data.getOrDefault("ElektraLaag", null));
-        statement.setObject(4, data.getOrDefault("ElektraHuidig", null));
-        statement.setObject(5, data.getOrDefault("ElektraZon", null));
-        statement.setObject(6, data.getOrDefault("Gas", null));
-        statement.setObject(7, data.getOrDefault("BuitenTemp", null));
+        statement.setObject(2, data.getOrDefault("readingHoog", null));
+        statement.setObject(3, data.getOrDefault("readingLaag", null));
+        statement.setObject(4, data.getOrDefault("readingZon", null));
+        statement.setObject(5, data.getOrDefault("Gas", null));
+        statement.setObject(6, data.getOrDefault("BuitenTemp", null));
         statement.executeUpdate();
     }
 
