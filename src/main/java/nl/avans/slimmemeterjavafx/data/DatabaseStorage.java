@@ -61,7 +61,7 @@ public class DatabaseStorage implements StorageInterface {
                 case "Gas":
                     gauges.add(new Gas(Gas));
                     break;
-                case "Buiten temp":
+                case "BuitenTemp":
                     gauges.add(new BuitenTemp(BuitenTemp));
                     break;
 
@@ -96,13 +96,13 @@ public class DatabaseStorage implements StorageInterface {
 
     // Save data to P1 database
     @Override
-    public void saveData(ArrayList<Gauges> gauges) throws Exception {
+    public void saveData(ArrayList<Gauges> gauge) throws Exception {
         this.connection = connect();
 
         connection.prepareStatement("DELETE FROM readings")
                 .execute();
-        for (Gauges gauge : gauges) {
-            this.saveGauges(gauge);
+        for (Gauges gauges : gauge) {
+            this.saveGauges(gauges);
         }
 
         connection.close();

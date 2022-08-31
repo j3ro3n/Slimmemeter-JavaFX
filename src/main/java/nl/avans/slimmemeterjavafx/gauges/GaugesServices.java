@@ -16,7 +16,7 @@ public class GaugesServices {
                 return Elektra.fields;
             case "Gas":
                 return Gas.fields;
-            case "Buiten temperatuur":
+            case "BuitenTemp":
                 return BuitenTemp.fields;
             default:
                 return null;
@@ -51,10 +51,10 @@ public class GaugesServices {
                 newGauges = new Elektra(data.get("readingHoog"), data.get("readingLaag"), data.get("readingZon"));
                 break;
             case "Gas":
-                newGauges = new Gas(data.get("Gas"));
+                newGauges = new Gas(data.get("gas"));
                 break;
-            case "Buiten temperatuur":
-                newGauges = new BuitenTemp(data.get("BuitenTemp"));
+            case "BuitenTemp":
+                newGauges = new BuitenTemp(data.get("buitenTemp"));
                 break;
             default:
                 return null;

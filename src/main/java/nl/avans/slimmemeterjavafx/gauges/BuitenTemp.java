@@ -5,46 +5,46 @@ import java.util.HashMap;
 public class BuitenTemp implements Gauges {
 
     public static HashMap<String, String> fields = new HashMap<String, String>() {{
-        put("reading", "Reading:");
+        put("buitenTemp", "BuitenTemp");
     }};
 
-    public final String type = "Buiten temperatuur";
+    public final String type = "BuitenTemp";
 
-    private int reading;
+    private int buitenTemp;
 
-    public BuitenTemp(int reading) {
-        this.setReading(reading);
+    public BuitenTemp(int buitenTemp) {
+        this.setBuitenTemp(buitenTemp);
     }
 
-    public int getReading() { return this.reading; }
+    public int getBuitenTemp() { return this.buitenTemp; }
 
-    public void setReading(int reading) { this.reading = reading; }
+    public void setBuitenTemp(int buitenTemp) { this.buitenTemp = buitenTemp; }
 
     @Override
     public HashMap<String, String> getFields() { return BuitenTemp.fields; }
 
     @Override
+    public String getType() { return this.type; }
+
+    @Override
     public HashMap<String, Integer> getData() {
         HashMap<String, Integer> data = new HashMap<>();
-        data.put("reading", this.reading);
-
+        data.put("buitenTemp", this.buitenTemp);
+        System.out.println(buitenTemp);
         return data;
     }
 
     @Override
-    public String getType() { return this.type; }
-
-    @Override
     public void setData(HashMap<String, Integer> data) {
-        this.reading = data.getOrDefault("reading", 0);
+        this.buitenTemp = data.getOrDefault("buitenTemp", 0);
     }
 
     @Override
-    public double calculateKwh() { return this.reading; }
+    public double calculateKwh() { return this.buitenTemp; }
 
     @Override
     public String toString() {
-        return String.format("Buiten temperatuur (reading: %d)", reading);
+        return String.format("BuitenTemp (Temp: %d C)", buitenTemp);
     }
 }
 
