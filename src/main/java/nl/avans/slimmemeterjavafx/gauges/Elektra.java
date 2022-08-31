@@ -43,9 +43,9 @@ public class Elektra implements Gauges {
     @Override
     public HashMap<String, Integer> getData() {
         HashMap<String, Integer> data = new HashMap<>();
-        data.put("reading Hoog", this.readingHoog);
-        data.put("reading Laag", this.readingLaag);
-        data.put("reading Zon", this.readingZon);
+        data.put("readingHoog", this.readingHoog);
+        data.put("readingLaag", this.readingLaag);
+        data.put("readingZon", this.readingZon);
 
         return data;
     }
@@ -53,9 +53,9 @@ public class Elektra implements Gauges {
 
     @Override
     public void setData(HashMap<String, Integer> data) {
-        this.readingHoog = data.getOrDefault("reading Hoog", 0);
-        this.readingLaag = data.getOrDefault("reading Laag", 0);
-        this.readingZon = data.getOrDefault("reading Zon", 0);
+        this.readingHoog = data.getOrDefault("readingHoog", 0);
+        this.readingLaag = data.getOrDefault("readingLaag", 0);
+        this.readingZon = data.getOrDefault("readingZon", 0);
     }
 
     @Override

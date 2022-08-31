@@ -29,8 +29,8 @@ public class BuitenTemp implements Gauges {
     @Override
     public HashMap<String, Integer> getData() {
         HashMap<String, Integer> data = new HashMap<>();
-        data.put("buitenTemp", this.buitenTemp);
-        System.out.println(buitenTemp);
+        data.put("BuitenTemp", this.buitenTemp);
+
         return data;
     }
 

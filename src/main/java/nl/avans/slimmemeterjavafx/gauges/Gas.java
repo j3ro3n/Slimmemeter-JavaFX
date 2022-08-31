@@ -30,7 +30,7 @@ public class Gas implements Gauges {
     @Override
     public HashMap<String, Integer> getData() {
         HashMap<String, Integer> data = new HashMap<>();
-        data.put("gas", this.gas);
+        data.put("Gas", this.gas);
 
         return data;
     }
@@ -45,7 +45,7 @@ public class Gas implements Gauges {
 
     @Override
     public String toString() {
-        return String.format("Gas (gas: %d m3)", gas);
+        return String.format("Gas (Gas: %d m3)", gas);
     }
 }
 

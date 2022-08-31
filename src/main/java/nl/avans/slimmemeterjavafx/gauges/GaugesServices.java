@@ -8,6 +8,7 @@ public class GaugesServices {
 
     // List of all gauges in the gauges service
     private ArrayList<Gauges> gauges = new ArrayList<>();
+    private ArrayList<Elektra> elektra = new ArrayList<>();
 
     // Get the fields for the gauge type
     public static HashMap<String, String> getFields(String gaugesType) {
@@ -25,9 +26,11 @@ public class GaugesServices {
 
     // Get all current gauges
     public ArrayList<Gauges> getGauges() { return this.gauges;}
+    //public ArrayList<Elektra> getElektra() { return this.elektra;}
 
     // Set all current gauges
     public void setGauges(ArrayList<Gauges> gauges) { this.gauges = gauges; }
+    //public void setElektra(ArrayList<Elektra> elektra) { this.elektra = elektra; }
 
     // Calculate KwH combined in the gauge service
     public double calculateTotalKwh() {
