@@ -27,6 +27,10 @@ public class Main extends Application {
     private ListView<String> gaugesList;
     private TextField kwhText;
     private TextField totalKwhText;
+    private TextField totalBuiTempText;
+    private TextField totalGasText;
+    private TextField gasText;
+    private TextField buiTempText;
     private Button deleteButton;
     private Gauges previousSelectedGauges = null;
     private String previousSelectedItem = null;
@@ -47,7 +51,7 @@ public class Main extends Application {
         borderPane.setTop(menuBar);
         borderPane.setCenter(editor);
 
-        Scene scene = new Scene(borderPane, 600, 350);
+        Scene scene = new Scene(borderPane, 600, 600);
         window.setScene(scene);
         window.setResizable(false); // Makes the Gui not adjustable
         window.show();
@@ -77,7 +81,7 @@ public class Main extends Application {
         // Gauge selector. Select which gauge you want to see.
         VBox gaugesTypeBox = this.createGaugesTypBox();
 
-        // Meterstand van de gauge
+        // Meterstand van de gauge kwh
         VBox kwhBox = new VBox();
         Label kwhLabel = new Label("Kilowatt per hour: (KwH)");
         kwhText = new TextField();
@@ -86,7 +90,25 @@ public class Main extends Application {
         kwhText.setDisable(true);
         kwhBox.getChildren().addAll(kwhLabel, kwhText);
 
-        // Meterstand totaal
+        // Meterstand Gas
+        VBox gasBox = new VBox();
+        Label gasLabel = new Label("Gas per dag: (m3)");
+        gasText = new TextField();
+        gasText.setPrefWidth(200.0);
+        gasText.setText("0");
+        gasText.setDisable(true);
+        kwhBox.getChildren().addAll(gasLabel, gasText);
+
+        // Meterstand buitentemperatuur
+        VBox buiTempBox = new VBox();
+        Label buiTempLabel = new Label("Buitentemperatuur per dag: (C)");
+        buiTempText = new TextField();
+        buiTempText.setPrefWidth(200.0);
+        buiTempText.setText("0");
+        buiTempText.setDisable(true);
+        kwhBox.getChildren().addAll(buiTempLabel, buiTempText);
+
+        // Meterstand totaal kwh
         VBox totalKwhBox = new VBox();
         Label totalKwhLabel = new Label("Total Kilowatt per hour: (KwH)");
         totalKwhText = new TextField();
@@ -95,9 +117,31 @@ public class Main extends Application {
         totalKwhText.setDisable(true);
         kwhBox.getChildren().addAll(totalKwhLabel, totalKwhText);
 
+        // Meterstand total gas m3 per day
+        VBox totalGasBox = new VBox();
+        Label totalGasLabel = new Label("Totaal gas per dag: (m3)");
+        totalGasText = new TextField();
+        totalGasText.setPrefWidth(200.0);
+        totalGasText.setText("0");
+        totalGasText.setDisable(true);
+        kwhBox.getChildren().addAll(totalGasLabel, totalGasText);
+
+        // Meterstand average buiten temperatuur
+        VBox totalBuiTempBox = new VBox();
+        Label totalBuiTempLabel = new Label("Gemiddelde buitentemperatuur per dag: (C)");
+        totalBuiTempText = new TextField();
+        totalBuiTempText.setPrefWidth(200.0);
+        totalBuiTempText.setText("0");
+        totalBuiTempText.setDisable(true);
+        kwhBox.getChildren().addAll(totalBuiTempLabel, totalBuiTempText);
+
         leftPane.add(gaugesTypeBox, 0, 0);
         leftPane.add(kwhBox, 0, 1);
-        leftPane.add(totalKwhBox, 0,2);
+        leftPane.add(gasBox, 0,2);
+        leftPane.add(buiTempBox, 0,3);
+        leftPane.add(totalKwhBox, 0,4);
+        leftPane.add(totalGasBox, 0,5);
+        leftPane.add(totalBuiTempBox, 0,6);
 
         // Create the gauge list box where al gauges are listed
         VBox gaugesListBox = new VBox();
@@ -119,12 +163,16 @@ public class Main extends Application {
                     this.previousSelectedItem = null;
                     this.previousSelectedGauges = null;
                     kwhText.setText("0");
+                    gasText.setText("0");
+                    buiTempText.setText("0");
                     gaugesListHeader.setText("Gauges:");
                     deleteButton.setDisable(true);
                     Platform.runLater(() -> gaugesList.getSelectionModel().select(null));
                 } else {
                     Gauges gauges = gaugesServices.getGauges().get(selectedIndex);
                     kwhText.setText(String.format("%s", gauges.calculateKwh()));
+                    gasText.setText(String.format("%s", gauges.calculateGas()));
+                    buiTempText.setText(String.format("%s", gauges.calculateBuitenTemp()));
                     this.previousSelectedItem = selectedItem;
                     this.previousSelectedGauges = gauges;
                     deleteButton.setDisable(false);
@@ -178,7 +226,11 @@ public class Main extends Application {
         }
 
         kwhText.setText("0");
+        gasText.setText("0");
+        buiTempText.setText("0");
         totalKwhText.setText(String.format("%s", gaugesServices.calculateTotalKwh()));
+        totalBuiTempText.setText(String.format("%s", gaugesServices.calculateAverageBuitenTemp()));
+        totalGasText.setText(String.format("%s", gaugesServices.calculateTotalGas()));
         gaugesList.getItems().addAll(gauges);
     }
 

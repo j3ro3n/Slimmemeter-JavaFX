@@ -12,11 +12,9 @@ public class BuitenTemp implements Gauges {
 
     private int buitenTemp;
 
-    public BuitenTemp(int buitenTemp) {
-        this.setBuitenTemp(buitenTemp);
-    }
+    public BuitenTemp(int buitenTemp) { this.setBuitenTemp(buitenTemp); }
 
-    public int getBuitenTemp() { return this.buitenTemp; }
+    public int getBuitenTemp() { return buitenTemp; }
 
     public void setBuitenTemp(int buitenTemp) { this.buitenTemp = buitenTemp; }
 
@@ -25,6 +23,16 @@ public class BuitenTemp implements Gauges {
 
     @Override
     public String getType() { return this.type; }
+
+    @Override
+    public double calculateKwh() {
+        return 0;
+    }
+
+    @Override
+    public double calculateGas() {
+        return 0;
+    }
 
     @Override
     public HashMap<String, Integer> getData() {
@@ -40,7 +48,7 @@ public class BuitenTemp implements Gauges {
     }
 
     @Override
-    public double calculateKwh() { return this.buitenTemp; }
+    public double calculateBuitenTemp() { return this.buitenTemp; }
 
     @Override
     public String toString() {

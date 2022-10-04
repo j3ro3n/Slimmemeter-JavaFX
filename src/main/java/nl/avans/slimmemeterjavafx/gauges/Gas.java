@@ -8,16 +8,15 @@ public class Gas implements Gauges {
         put("gas", "Gas:");
     }};
 
+    //Type of gauge
     public final String type = "Gas";
 
+    // Reading gas m3
     private int gas;
 
-    public Gas(int gas) {
+    public Gas(int gas) { this.setGas(gas); }
 
-        this.setGas(gas);
-    }
-
-    public int getGas() { return this.gas; }
+    public int getGas() { return gas; }
 
     public void setGas(int gas) { this.gas = gas; }
 
@@ -26,6 +25,16 @@ public class Gas implements Gauges {
 
     @Override
     public String getType() { return this.type; }
+
+    @Override
+    public double calculateKwh() {
+        return 0;
+    }
+
+    @Override
+    public double calculateBuitenTemp() {
+        return 0;
+    }
 
     @Override
     public HashMap<String, Integer> getData() {
@@ -41,7 +50,8 @@ public class Gas implements Gauges {
     }
 
     @Override
-    public double calculateKwh() { return this.gas; }
+    public double calculateGas() { return this.gas; }
+
 
     @Override
     public String toString() {

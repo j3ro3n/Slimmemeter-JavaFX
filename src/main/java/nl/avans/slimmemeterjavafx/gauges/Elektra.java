@@ -4,16 +4,23 @@ import java.util.HashMap;
 
 public class Elektra implements Gauges {
 
+    // Fields for gauge elektra
     public static HashMap<String, String> fields = new HashMap<String, String>() {{
         put("readingHoog", "ReadingHoog:");
         put("readingLaag", "ReadingLaag:");
         put("readingZon", "ReadingZon:");
     }};
 
+    //Type of gauge
     public final String type = "Elektra";
 
+    // Reading elekta high
     private int readingHoog;
+
+    // Reading elektra low
     private int readingLaag;
+
+    // Reading elektra sun
     private int readingZon;
 
     public Elektra(int readingHoog, int readingLaag, int readingZon) {
@@ -22,15 +29,15 @@ public class Elektra implements Gauges {
         this.setReadingZon(readingZon);
     }
 
-    public int getReadingHoog() { return this.readingHoog; }
+    public int getReadingHoog() { return readingHoog; }
 
     public void setReadingHoog(int readingHoog) { this.readingHoog = readingHoog; }
 
-    public int getReadingLaag() { return this.readingLaag; }
+    public int getReadingLaag() { return readingLaag; }
 
     public void setReadingLaag(int readingLaag) { this.readingLaag = readingLaag; }
 
-    public int getReadingZon() { return this.readingZon; }
+    public int getReadingZon() { return readingZon; }
 
     public void setReadingZon(int readingZon) { this.readingZon = readingZon; }
 
@@ -60,6 +67,16 @@ public class Elektra implements Gauges {
 
     @Override
     public double calculateKwh() { return this.readingHoog + this.readingLaag - this.readingZon; }
+
+    @Override
+    public double calculateGas() {
+        return 0;
+    }
+
+    @Override
+    public double calculateBuitenTemp() {
+        return 0;
+    }
 
     @Override
     public String toString() {

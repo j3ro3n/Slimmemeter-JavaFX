@@ -80,11 +80,11 @@ public class DatabaseStorage implements StorageInterface {
         PreparedStatement statement = connection.prepareStatement("INSERT INTO readings (type, readingHoog, readingLaag, readingZon, Gas, BuitenTemp) VALUES (?, ?, ?, ?, ?, ?)");
         HashMap<String, Integer> data = gauges.getData();
         statement.setObject(1, gauges.getType());
-        statement.setObject(2, data.getOrDefault("readingHoog", null));
-        statement.setObject(3, data.getOrDefault("readingLaag", null));
-        statement.setObject(4, data.getOrDefault("readingZon", null));
-        statement.setObject(5, data.getOrDefault("Gas", null));
-        statement.setObject(6, data.getOrDefault("BuitenTemp", null));
+        statement.setObject(2, data.getOrDefault("readingHoog", 0));
+        statement.setObject(3, data.getOrDefault("readingLaag", 0));
+        statement.setObject(4, data.getOrDefault("readingZon", 0));
+        statement.setObject(5, data.getOrDefault("Gas", 0));
+        statement.setObject(6, data.getOrDefault("BuitenTemp", 0));
         statement.executeUpdate();
     }
 

@@ -10,3 +10,4 @@ CREATE TABLE `readings` (
                           `BuitenTemp` int(11) DEFAULT NULL,
                           PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+

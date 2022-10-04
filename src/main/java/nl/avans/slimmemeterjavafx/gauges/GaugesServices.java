@@ -9,6 +9,8 @@ public class GaugesServices {
     // List of all gauges in the gauges service
     private ArrayList<Gauges> gauges = new ArrayList<>();
     private ArrayList<Elektra> elektra = new ArrayList<>();
+    private ArrayList<BuitenTemp> buitenTemp = new ArrayList<>();
+    private ArrayList<Gas> gas = new ArrayList<>();
 
     // Get the fields for the gauge type
     public static HashMap<String, String> getFields(String gaugesType) {
@@ -26,13 +28,11 @@ public class GaugesServices {
 
     // Get all current gauges
     public ArrayList<Gauges> getGauges() { return this.gauges;}
-    //public ArrayList<Elektra> getElektra() { return this.elektra;}
 
     // Set all current gauges
     public void setGauges(ArrayList<Gauges> gauges) { this.gauges = gauges; }
-    //public void setElektra(ArrayList<Elektra> elektra) { this.elektra = elektra; }
 
-    // Calculate KwH combined in the gauge service
+    // Calculate all KwH combined in the gauge service
     public double calculateTotalKwh() {
         double totalKwh = 0.0;
 
@@ -40,6 +40,25 @@ public class GaugesServices {
             totalKwh += gauges.calculateKwh();
         }
         return totalKwh;
+    }
+    // Calculate buitentemperatuur gemiddeld over de dag in the gauge service
+    public double calculateAverageBuitenTemp() {
+        double averageBuitenTemp = 0.0;
+
+        for (Gauges gauges : gauges) {
+             averageBuitenTemp += gauges.calculateBuitenTemp()/2;
+        }
+        return averageBuitenTemp;
+    }
+
+    // Calculate gas per dag in the gauge service
+    public double calculateTotalGas() {
+        double totalGas = 0.0;
+
+        for (Gauges gauges : gauges) {
+            totalGas += gauges.calculateGas();
+        }
+        return totalGas;
     }
 
     // Add gauge to list
