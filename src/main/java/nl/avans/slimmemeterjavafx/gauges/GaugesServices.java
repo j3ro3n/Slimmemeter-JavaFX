@@ -1,16 +1,13 @@
 package nl.avans.slimmemeterjavafx.gauges;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.function.Predicate;
 
 public class GaugesServices {
 
     // List of all gauges in the gauges service
     private ArrayList<Gauges> gauges = new ArrayList<>();
-    private ArrayList<Elektra> elektra = new ArrayList<>();
-    private ArrayList<BuitenTemp> buitenTemp = new ArrayList<>();
-    private ArrayList<Gas> gas = new ArrayList<>();
+
 
     // Get the fields for the gauge type
     public static HashMap<String, String> getFields(String gaugesType) {
@@ -45,10 +42,22 @@ public class GaugesServices {
     public double calculateAverageBuitenTemp() {
         double averageBuitenTemp = 0.0;
 
-        for (Gauges gauges : gauges) {
-             averageBuitenTemp += gauges.calculateBuitenTemp()/2;
+        ArrayList<Gauges> buitenTemp = new ArrayList<>();
+
+        for (Gauges buitentemp : gauges) {
+            if (buitentemp.toString().contains("BuitenTemp")) {
+                buitenTemp.add(buitentemp);
+            }
         }
-        return averageBuitenTemp;
+
+        int n = buitenTemp.size();
+
+         for (Gauges buitentemp : buitenTemp) {
+             averageBuitenTemp += buitentemp.calculateBuitenTemp();
+        }
+
+        return averageBuitenTemp/n;
+
     }
 
     // Calculate gas per dag in the gauge service
@@ -63,6 +72,7 @@ public class GaugesServices {
 
     // Add gauge to list
     public void addGauges(Gauges gauges) { this.gauges.add(gauges); }
+    //public void addBuitenTemp(BuitenTemp buitenTemp) { this.buitenTemp.add(buitenTemp); }
 
     //Add gauge
     public Gauges addGauges(String gaugesType, HashMap<String, Integer> data) {

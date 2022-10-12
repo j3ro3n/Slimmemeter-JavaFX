@@ -10,7 +10,7 @@ public interface Gauges extends Serializable {
     //Calculate the KwH of the gauge
     double calculateKwh();
 
-    //Calculate the buiten temperatuur of the gauge
+    //Calculate the gas of the gauge
     double calculateGas();
 
     //Calculate the buiten temperatuur of the gauge
