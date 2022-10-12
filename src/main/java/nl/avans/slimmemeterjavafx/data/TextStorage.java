@@ -58,9 +58,9 @@ public class TextStorage implements StorageInterface {
         }
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(gaugeList, this.deserializer);
-        Gson custonGson = gsonBuilder.create();
+        Gson customGson = gsonBuilder.create();
 
-        return custonGson.fromJson(file.toString(), gaugeList);
+        return customGson.fromJson(file.toString(), gaugeList);
     }
 
     //
